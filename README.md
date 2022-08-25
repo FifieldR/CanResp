@@ -1,5 +1,7 @@
 # CanResp
 
+If Formating is incorrect change view to raw.
+
 Welcome To CanResp
 CanResp is a program created by Ryan Fifield
 Using AutoHotKey
