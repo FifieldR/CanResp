@@ -30,6 +30,9 @@ Input Response
 	    Advancded RMA
 	    Dead on Arrival RMA
 	    Out of Warranty RMA
+		Suspected Water or Surge Damage
+		Q60 Powerboards
+		P56 Powerboards
     RMA Recipt
 	Pause + r
 	    Standard RMA
@@ -46,6 +49,7 @@ Input Response
 	    RMA Stock Issue
 	    Replacement Product Issue
 	    Bad RMA
+		Powerboard Follow Up
   Chat
     Chat Intro
 	PrintScreen + 1
