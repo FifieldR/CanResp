@@ -27,7 +27,6 @@ IfMsgBox, No
     
 CoordMode, caret, screen
 CoordMode, mouse, screen
-#Include, Acc.ahk
 #Include, RMAInfo.ahk
 #Include, RMAIssues.ahk
 #Include, RMARecept.ahk
