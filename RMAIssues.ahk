@@ -13,6 +13,7 @@ RMAIs:
     Gui, ISR:Add, Radio, vSI, RMA Stock Issue
     Gui, ISR:Add, Radio, vRP, Replacement Product
     Gui, ISR:Add, Radio, vBR, Bad RMA
+    Gui, ISR:Add, Radio, vPB, PowerBoard Follow Up
     Gui, ISR:Add, Button, , Submit
     Gui, ISR:Show
     Return
@@ -60,6 +61,13 @@ RMAIs:
         InputBox, product, Product, Input the product
         buffer = I apologize that you are is still experiencing issues with your %product%. I have requested that a replacement unit to be sent out immediately. I have also asked there be a UPS shipping label be created to bring back the defective unit. This will come in the form of an email from our RMA partner (Scanfil).%ending%
         SetToClip(buffer)
+        Return
+    } else if (PB){
+        InputBox, cost, Cost, Input the Full Out Of Warranty Cost
+        reducedCost = cost - 99
+        buffer = Unfortunately, the replacement power board we installed failed to resolve the issue. Upon investigation, it appears the__________ of the camera is what failed. If you would like to repair or replace the remaining components, the cost would be $%reducedCost%.00  USD. This is after the $99.00 USD you had already paid, as the typical cost for this model is $%cost%.00 USD.{Enter}{Enter}Please note that this cost covers anything and everything that had failed. If your original device is beyond repair, we will issue a replacement unit. Whether the unit is repaired or replaced, it will be covered by a 90 Day Warranty to back up our services.{Enter}{Enter}Please let me know how you'd like to proceed.%ending%
+        SetToClip(buffer)
+        Return
     }else {
         MsgBox, Not a valid input
     } Return
