@@ -31,8 +31,6 @@ CoordMode, mouse, screen
 #Include, RMAIssues.ahk
 #Include, RMARecept.ahk
 DetectHiddenWindows, On
-;Ending
-ending = {Enter}{Enter}Thank you for choosing Axis Communications as your IP Video Surveillance partner{!}{Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php
 ;CanResp Setup
 Pause & c::
 CRSU:
@@ -59,6 +57,11 @@ CRSU:
     filew.Close()
     }
     Return
+
+;Opening
+opening = Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
+;Ending
+ending = {Enter}{Enter}Thank you for choosing Axis Communications as your IP Video Surveillance partner{!}{Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php
 
 ;RMA Responses
 PrintScreen & r::
@@ -91,7 +94,7 @@ PrintScreen & 4::
     Return
 ;Freeform Responses
 PrintScreen & f::
-    Send, Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case. 
+    Send, Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
     Return
 Pause & f::
     Send, %ending%
