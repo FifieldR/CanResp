@@ -5,11 +5,11 @@ If Formating is incorrect change view to raw.
 Welcome To CanResp
 CanResp is a program created by Ryan Fifield
 Using AutoHotKey
-And (maybe) the Acc.ahk library
 This program was made to bind some of our canned responses to some hotkeys mainly using printscreen and pause as our initiator.
 If you have any issues with this program or have any suggestions send me an email at ryan.fifield@axis.com with the subject line stating one of the following: 
 CanResp Suggestion
 CanResp Issue
+
 
 If you have access to the github and can, you can report any issues you have in the issues tab.
 
