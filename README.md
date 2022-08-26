@@ -10,7 +10,7 @@ If you have any issues with this program or have any suggestions send me an emai
 CanResp Suggestion
 CanResp Issue
 
-If you have access to the github and can, you can report any issues you have in the issues tab.
+If you have access to the github and can, you can report any issues you have in the issues tab and any suggestions in discussion.
 
 You are free to edit the code in anyway, but if you have and it breaks you have surrendered the right to ask me for help or troubleshooting. 
 This program is VERY fragile and held together with thumbtacks and tape, so this is not recommended.
@@ -40,9 +40,9 @@ Input Response
 	    Out of Warranty RMA
 	    Advanced RMA
 	    Dead on Arrival RMA
-		For Canada
-		For USA
-		For Mexico
+			For Canada
+			For USA
+			For Mexico
   Issues
         PrintScreen + i
 	    Shipment Delay Issue
@@ -51,6 +51,9 @@ Input Response
 	    Replacement Product Issue
 	    Bad RMA
 		Powerboard Follow Up
+		Water/Surge Damage
+			Standard
+			Advanced
   Chat
     Chat Intro
 	PrintScreen + 1

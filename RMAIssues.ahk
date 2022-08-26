@@ -14,6 +14,7 @@ RMAIs:
     Gui, ISR:Add, Radio, vRP, Replacement Product
     Gui, ISR:Add, Radio, vBR, Bad RMA
     Gui, ISR:Add, Radio, vPB, PowerBoard Follow Up
+    Gui, ISR:Add, Radio, vWATDAM, Water/Surge Damage
     Gui, ISR:Add, Button, , Submit
     Gui, ISR:Show
     Return
@@ -64,9 +65,37 @@ RMAIs:
         Return
     } else if (PB){
         InputBox, cost, Cost, Input the Full Out Of Warranty Cost
-        reducedCost = cost - 99
+        reducedCost := cost - 99
         buffer = Unfortunately, the replacement power board we installed failed to resolve the issue. Upon investigation, it appears the__________ of the camera is what failed. If you would like to repair or replace the remaining components, the cost would be $%reducedCost%.00  USD. This is after the $99.00 USD you had already paid, as the typical cost for this model is $%cost%.00 USD.{Enter}{Enter}Please note that this cost covers anything and everything that had failed. If your original device is beyond repair, we will issue a replacement unit. Whether the unit is repaired or replaced, it will be covered by a 90 Day Warranty to back up our services.{Enter}{Enter}Please let me know how you'd like to proceed.%ending%
         SetToClip(buffer)
+        Return
+    } else if (WATDAM){
+        Gui, WATINFO:New, ,Water/Surge Damage Info 
+        Gui, WATINFO:Add, Text, , What is The Product
+        Gui, WATINFO:Add, Edit, vWATProduct,
+        Gui, WATINFO:Add, Text, , What is The Serial Number
+        Gui, WATINFO:Add, Edit, vWATSerial,
+        Gui, WATINFO:Add, Text, , What is The Case Number(or RMA Number If it was Advanced)
+        Gui, WATINFO:Add, Edit, vWATCase,
+        Gui, WATINFO:Add, Text, , What is the cost to repair
+        Gui, WATINFO:Add, Edit, vWATCost,
+        Gui, WATINFO:Add, Text, ,Was It an Advanced RMA?
+        Gui, WATINFO:Add, Checkbox, vADV, Advanced RMA
+        Gui, WATINFO:Add, Button, , Submit
+        Gui, WATINFO:Show
+        Return
+        WATINFOButtonSubmit:
+            Gui, WATINFO:Submit
+            Gui, WATINFO:Destroy
+        if (!ADV) {
+            buffer = Unfortunately, our repair facility has determined that your %WATProduct% (SN: %WATSerial%) has been damaged due to ELECTRICAL SURGE OR WATER INTRUSION [please see photo(s) within your online case]. This type of damage is not covered under warranty and therefore the warranty on this unit has been voided.{Enter}{Enter}Optionally, we do have an Out of Warranty Repair RMA program. The cost to repair this product would be $%WATCost%.00 USD. To initiate the Out of Warranty Repair RMA program you need to call us at 800-444-2947 and select option 2. In order for us to process your credit card payment, please reference Case#: %WATCase% to expedite processing. For security reasons please do not provide any credit card information within the case.{Enter}{Enter}NOTE: Our Out of Warranty Repair program guarantees that you will receive back a working product. Axis will fully repair, refurbish and clean your product, or where necessary, replace your product with a fully refurbished unit. In either case, the repaired or replaced unit will be covered under the remainder of the original units remaining warranty period.%ending% 
+            SetToClip(buffer)
+            Return
+        } else if (ADV) {
+            buffer = Unfortunately, our repair facility has determined that your %WATProduct% (SN: %WATSerial%) has been damaged due to ELECTRICAL SURGE OR WATER INTRUSION [please see photo(s) within your online case]. This type of damage is not covered under warranty and therefore the warranty on this unit has been voided. Since you have already received a replacement unit from us, our RMA Coordinator will be sending you an invoice for the Out of Warranty cost of the unit ($%WATCost%.00 USD). If you wish to deal with this promptly rather than waiting for the invoice, please feel free to call our RMA Coordinator @ 1-800-444-2947, option 2; please reference RMA #%WATCase% to expedite processing.%ending%
+            SetToClip(buffer)
+            Return
+        }
         Return
     }else {
         MsgBox, Not a valid input
