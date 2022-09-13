@@ -18,7 +18,7 @@ RMAIn:
     Gui, RIR:Add, Radio, vRMADOA, Dead On Arrival
     Gui, RIR:Add, Radio, vSUSWat, Suspected Water or Surge
     Gui, RIR:Add, Radio, vQ60Pow, Q60 Powerboard
-    Gui, RIR:Add, Radio, vP56Pow, P5424/35/E Powerboard
+    Gui, RIR:Add, Radio, vP56Pow, P5624/35/E Powerboard
     Gui, RIR:Add, Text, , Are They A Partner
     Gui, RIR:Add, Checkbox, vPartner, Partner
     Gui, RIR:Add, Button, , Submit
