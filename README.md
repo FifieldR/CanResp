@@ -10,7 +10,7 @@ If you have any issues with this program or have any suggestions send me an emai
 CanResp Suggestion
 CanResp Issue
 
-If you have access to the github and can, you can report any issues you have in the issues tab and any suggestions in discussion.
+If you have access to the github and can, you can report any issues or suggestions you have in the issues tab.
 
 You are free to edit the code in anyway, but if you have and it breaks you have surrendered the right to ask me for help or troubleshooting. 
 This program is VERY fragile and held together with thumbtacks and tape, so this is not recommended.

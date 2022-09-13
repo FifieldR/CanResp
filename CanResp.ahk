@@ -32,7 +32,7 @@ CoordMode, mouse, screen
 #Include, RMARecept.ahk
 DetectHiddenWindows, On
 ;CanResp Setup
-Pause & c::
+^!c::
 CRSU:
     Gui, CRSU:New, ,CanResp Setup
     Gui, CRSU:Add, Text, , First Name
@@ -64,19 +64,19 @@ opening = Thank you for contacting Axis Communications. My name is %FName%, and 
 ending = {Enter}{Enter}Thank you for choosing Axis Communications as your IP Video Surveillance partner{!}{Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php
 
 ;RMA Responses
-PrintScreen & r::
+^!r::
  Goto, RMAIn
 
 
-Pause & r::
+^!t::
  Goto, RMARe
 
 
 ;Chat Responses
-PrintScreen & 1::
+^!1::
     Send, Hello, my name is %FName% and I will be assisting you with your RMA request. Please give me a moment to review this chat transcript before we begin.
     Return
-PrintScreen & 2::
+^!2::
     MsgBox, 4, information, Do you have the info needed to complete the RMA?,
     IfMsgBox, Yes
         buffer = I have all of the information that I need to create the RMA, I will just take a couple of minutes and I will have an RMA number for you.
@@ -84,26 +84,26 @@ PrintScreen & 2::
         buffer = Where would you like us to ship the camera once it is repaired or replaced, can I also get a good contact number for you?
         SetToClip(buffer)
         Return
-PrintScreen & 3::
+^!3::
     InputBox, RMAnum, RMA Number, Input RMA number,
     buffer = Your RMA{#} is %RMAnum%. There will be a detailed email to follow. Is there anything else that I can assist you with today?
     SetToClip(buffer)
     Return
-PrintScreen & 4::
+^!4::
     Send, My pleasure, thank you for choosing Axis Communications as your IP Video Surveillance partner. Have a great day!
     Return
 ;Freeform Responses
-PrintScreen & f::
+^!f::
     Send, Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
     Return
-Pause & f::
+^!g::
     Send, %ending%
     Return
 ;Issues
-PrintScreen & i::
+^!i::
  Goto, RMAIs
 
-PrintScreen & v::
+^!v::
     canboard := "CanBoard.clip"
     canbrr := FileOpen(canboard, "r")
     isovared := canbrr.Read()
