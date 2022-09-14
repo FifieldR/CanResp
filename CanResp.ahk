@@ -6,7 +6,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 file := "CanResp.conf"
 canboard := "CanBoard.clip"
-filever := 00000001
+filever := 00000002
 if (FileExist(file)) {
     FileReadLine, starter, %file%, 1
     if (starter != filever) {
@@ -41,6 +41,7 @@ CRSU:
     Gui, CRSU:Add, Edit, vSetlname w160, Smith
     Gui, CRSU:Add, Text, , Title
     Gui, CRSU:Add, Edit, vSettitle w160, Janitor Manager
+    Gui, CRSU:Add, Checkbox, vAdvHotSet, Advanced Hotkey Setup(Currently not doing anything)
     Gui, CRSU:Add, Button, , Submit
     Gui, CRSU:Show
     Return
@@ -51,17 +52,38 @@ CRSU:
     if (Setfname = "" || Setlname = "" || Settitle = ""){
         MsgBox, One or more fields are empty
         Goto, CRSU
-    } else {
+    } else if (!AdvHotSet) {
     filew :=FileOpen(file, "w")
     filew.Write(filever . "`r`nfirst_name_var: `r`n" . Setfname . "`r`nlast_name_var:`r`n" . Setlname . "`r`ntitle_var:`r`n" . Settitle)
     filew.Close()
+    } else if (AdvHotSet) {
+        Gui, AdvHKSET:New, ,Advanced Hotkey Setup
+        Gui, AdvHKSET:Add, Text, , RMA Info Request
+        Gui, Add, Hotkey, vRMAInHot, ^!r
+        Gui, AdvHKSET:Add, Text, , RMA Receipt
+        Gui, Add, Hotkey, vRMARcHot, ^!t
+        Gui, AdvHKSET:Add, Text, , RMA Issues
+        Gui, Add, Hotkey, vRMAIsHot, ^!i
+        Gui, AdvHKSET:Add, Text, , CanResp Paste
+        Gui, Add, Hotkey, vRMAPasteHot, ^!v
+        Gui, AdvHKSET:Add, Button, , Submit
+        Gui, AdvHKSET:Show
+    Return
+    AdvHKSETButtonSubmit:
+        Gui, AdvHKSET:Submit
+        Gui, AdvHKSET:Destroy
+
+    filew :=FileOpen(file, "w")
+    filew.Write(filever . "`r`nfirst_name_var: `r`n" . Setfname . "`r`nlast_name_var:`r`n" . Setlname . "`r`ntitle_var:`r`n" . Settitle . "`r`nrma_info_request:`r`n" . RMAInHot . "`r`nrma_receipt:`r`n" . RMARcHot . "`r`nrma_issues:`r`n" . RMAIsHot . "`r`ncanresp_paste:`r`n" . RMAPasteHot)
+    filew.Close()
+    Return
     }
     Return
 
 ;Opening
 opening = Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
 ;Ending
-ending = {Enter}{Enter}Thank you for choosing Axis Communications as your IP Video Surveillance partner{!}{Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php
+ending = {Enter}{Enter}Thank you for choosing Axis Communications as your IP Video Surveillance partner{!}{Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php{Enter}{Enter}
 
 ;RMA Responses
 ^!r::
