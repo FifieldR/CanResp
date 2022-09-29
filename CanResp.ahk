@@ -4,6 +4,21 @@
 ;#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+;vars
+
+;Opening
+opening = Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
+;Ending
+ending = {Enter}{Enter}Thank you for choosing Axis Communications as your IP Video Surveillance partner{!}{Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php{Enter}{Enter}
+;Canada Address
+canLoc = {Enter}{Enter}Axis Communications, Inc.{Enter}90 Burnhamthorpe Rd W{Enter}Suite 1000{Enter}Mississauga, ON  L5B 3C3{Enter}CANADA{Enter}
+;USA Address
+usaLoc = {Enter}{Enter}Axis Communications, Inc.{Enter}c/o Scanfil{Enter}4345 Hamilton Mill Road - Suite 400{Enter}Buford, GA 30518{Enter}UNITED STATES OF AMERICA{Enter}
+;Mexico Address
+mexLoc = {Enter}{Enter}Mexico, Ciudad Mexico{Enter}Axis Communications{Enter}Av. Insurgentes Sur 1647. Piso 8 - 801{Enter}Col. San José Insurgentes, Del. Benito Juárez{Enter}C. P. 03900{Enter}Ciudad de México, Distrito Federal{Enter}
+
+
+
 file := "CanResp.conf"
 canboard := "CanBoard.clip"
 filever := 00000002
@@ -77,14 +92,8 @@ CRSU:
     filew.Write(filever . "`r`nfirst_name_var: `r`n" . Setfname . "`r`nlast_name_var:`r`n" . Setlname . "`r`ntitle_var:`r`n" . Settitle . "`r`nrma_info_request:`r`n" . RMAInHot . "`r`nrma_receipt:`r`n" . RMARcHot . "`r`nrma_issues:`r`n" . RMAIsHot . "`r`ncanresp_paste:`r`n" . RMAPasteHot)
     filew.Close()
     Return
-    }
-    Return
-
-;Opening
-opening = Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
-;Ending
-ending = {Enter}{Enter}Thank you for choosing Axis Communications as your IP Video Surveillance partner{!}{Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php{Enter}{Enter}
-
+    } Return
+    
 ;RMA Responses
 ^!r::
  Goto, RMAIn
