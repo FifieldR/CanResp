@@ -11,7 +11,7 @@ opening = Thank you for contacting Axis Communications. My name is %FName%, and 
 ;Ending
 ending = {Enter}{Enter}Thank you for choosing Axis Communications as your IP Video Surveillance partner{!}{Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php{Enter}{Enter}
 ;Canada Address
-canLoc = {Enter}{Enter}Axis Communications, Inc.{Enter}90 Burnhamthorpe Rd W{Enter}Suite 1000{Enter}Mississauga, ON  L5B 3C3{Enter}CANADA{Enter}
+canLoc = {Enter}{Enter}Axis Communications, Inc.{Enter}c/o Bigtech{Enter}5990 14th Ave{Enter}Markham, ON L3S 4M4{Enter}CANADA{Enter}
 ;USA Address
 usaLoc = {Enter}{Enter}Axis Communications, Inc.{Enter}c/o Scanfil{Enter}4345 Hamilton Mill Road - Suite 400{Enter}Buford, GA 30518{Enter}UNITED STATES OF AMERICA{Enter}
 ;Mexico Address
