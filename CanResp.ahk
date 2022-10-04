@@ -4,20 +4,16 @@
 ;#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+
 ;vars
 
-;Opening
-opening = Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
-;Ending
-ending = {Enter}{Enter}Thank you for choosing Axis Communications as your IP Video Surveillance partner{!}{Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php{Enter}{Enter}
+
 ;Canada Address
 canLoc = {Enter}{Enter}Axis Communications, Inc.{Enter}c/o Bigtech{Enter}5990 14th Ave{Enter}Markham, ON L3S 4M4{Enter}CANADA{Enter}
 ;USA Address
 usaLoc = {Enter}{Enter}Axis Communications, Inc.{Enter}c/o Scanfil{Enter}4345 Hamilton Mill Road - Suite 400{Enter}Buford, GA 30518{Enter}UNITED STATES OF AMERICA{Enter}
 ;Mexico Address
 mexLoc = {Enter}{Enter}Mexico, Ciudad Mexico{Enter}Axis Communications{Enter}Av. Insurgentes Sur 1647. Piso 8 - 801{Enter}Col. San José Insurgentes, Del. Benito Juárez{Enter}C. P. 03900{Enter}Ciudad de México, Distrito Federal{Enter}
-
-
 
 file := "CanResp.conf"
 canboard := "CanBoard.clip"
@@ -39,13 +35,20 @@ FileReadLine, Title, %file%, 7
 MsgBox,4,Is This Correct?,%FName% %LName% %Title%
 IfMsgBox, No
     Goto, CRSU
-    
+
+;Vardependvars
+;Opening
+opening = Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
+;Ending
+ending = {Enter}{Enter}Thank you for choosing Axis Communications as your IP Video Surveillance partner{!}{Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php{Enter}{Enter}
 CoordMode, caret, screen
 CoordMode, mouse, screen
 #Include, RMAInfo.ahk
 #Include, RMAIssues.ahk
 #Include, RMARecept.ahk
 DetectHiddenWindows, On
+
+
 ;CanResp Setup
 ^!c::
 CRSU:
