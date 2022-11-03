@@ -105,33 +105,45 @@ CRSU:
 ^!t::
  Goto, RMARe
 
+;Teir 2 Template
+^!n::
+    Send, Product: {Enter}{Enter}========================={Enter}{Enter}Spoke With: {Enter}{Enter}Reported Problem: {Enter}{Enter}-------------------------{Enter}Troubleshooting on call:{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}-------------------------{Enter}{Enter}Current Status:{Enter}
+    SendEvent {Shift Up}{Ctrl Up}{Alt Up}
+    Return
 
 ;Chat Responses
 ^!1::
     Send, Hello, my name is %FName% and I will be assisting you with your RMA request. Please give me a moment to review this chat transcript before we begin.
+    SendEvent {Shift Up}{Ctrl Up}{Alt Up}
     Return
 ^!2::
     MsgBox, 4, information, Do you have the info needed to complete the RMA?,
     IfMsgBox, Yes
         buffer = I have all of the information that I need to create the RMA, I will just take a couple of minutes and I will have an RMA number for you.
+        SendEvent {Shift Up}{Ctrl Up}{Alt Up}
     IfMsgBox, No
         buffer = Where would you like us to ship the camera once it is repaired or replaced, can I also get a good contact number for you?
         SetToClip(buffer)
+        SendEvent {Shift Up}{Ctrl Up}{Alt Up}
         Return
 ^!3::
     InputBox, RMAnum, RMA Number, Input RMA number,
     buffer = Your RMA{#} is %RMAnum%. There will be a detailed email to follow. Is there anything else that I can assist you with today?
     SetToClip(buffer)
+    SendEvent {Shift Up}{Ctrl Up}{Alt Up}
     Return
 ^!4::
     Send, My pleasure, thank you for choosing Axis Communications as your IP Video Surveillance partner. Have a great day!
+    SendEvent {Shift Up}{Ctrl Up}{Alt Up}
     Return
 ;Freeform Responses
 ^!f::
     Send, Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
+    SendEvent {Shift Up}{Ctrl Up}{Alt Up}
     Return
 ^!g::
     Send, %ending%
+    SendEvent {Shift Up}{Ctrl Up}{Alt Up}
     Return
 ;Issues
 ^!i::
@@ -143,6 +155,7 @@ CRSU:
     isovared := canbrr.Read()
     canbrr.Close()
     Send, %isovared%
+    SendEvent {Shift Up}{Ctrl Up}{Alt Up}
     Return 
 ;Functions
 SetToClip(buffer) {
