@@ -3,6 +3,7 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
+
 RMAIs:
     Gui, ISR:New, ,Issue Responses
     Gui, ISR:Add, text, ,What Is the Issue
@@ -89,7 +90,7 @@ RMAIs:
             buffer = Unfortunately, our repair facility has determined that your %WATProduct% (SN: %WATSerial%) has been damaged due to ELECTRICAL SURGE OR WATER INTRUSION [please see photo(s) within your online case]. This type of damage is not covered under warranty and therefore the warranty on this unit has been voided.{Enter}{Enter}Optionally, we do have an Out of Warranty Repair RMA program. The cost to repair this product would be $%WATCost%.00 USD. To initiate the Out of Warranty Repair RMA program you need to call us at 800-444-2947 and select option 2. In order for us to process your credit card payment, please reference Case#: %WATCase% to expedite processing. For security reasons please do not provide any credit card information within the case.{Enter}{Enter}NOTE: Our Out of Warranty Repair program guarantees that you will receive back a working product. Axis will fully repair, refurbish and clean your product, or where necessary, replace your product with a fully refurbished unit. In either case, the repaired or replaced unit will be covered under the remainder of the original units remaining warranty period.%ending% 
             SetToClip(buffer)
             Return
-        } else if (ADV) {
+        } else if (wADV) {
             buffer = Unfortunately, our repair facility has determined that your %WATProduct% (SN: %WATSerial%) has been damaged due to ELECTRICAL SURGE OR WATER INTRUSION [please see photo(s) within your online case]. This type of damage is not covered under warranty and therefore the warranty on this unit has been voided. Since you have already received a replacement unit from us, our RMA Coordinator will be sending you an invoice for the Out of Warranty cost of the unit ($%WATCost%.00 USD). If you wish to deal with this promptly rather than waiting for the invoice, please feel free to call our RMA Coordinator @ 1-800-444-2947, option 2; please reference RMA #%WATCase% to expedite processing.%ending%
             SetToClip(buffer)
             Return
