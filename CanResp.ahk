@@ -41,6 +41,8 @@ IfMsgBox, No
 opening = Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
 ;Ending
 ending = {Enter}{Enter}Thank you for choosing Axis Communications as your IP Video Surveillance partner{!}{Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php{Enter}{Enter}
+
+
 CoordMode, caret, screen
 CoordMode, mouse, screen
 #Include, RMAInfo.ahk
@@ -95,8 +97,11 @@ CRSU:
     filew.Write(filever . "`r`nfirst_name_var: `r`n" . Setfname . "`r`nlast_name_var:`r`n" . Setlname . "`r`ntitle_var:`r`n" . Settitle . "`r`nrma_info_request:`r`n" . RMAInHot . "`r`nrma_receipt:`r`n" . RMARcHot . "`r`nrma_issues:`r`n" . RMAIsHot . "`r`ncanresp_paste:`r`n" . RMAPasteHot)
     filew.Close()
     Return
-    } Return
+    }
+  
     
+
+
 ;RMA Responses
 ^!r::
  Goto, RMAIn
@@ -105,11 +110,21 @@ CRSU:
 ^!t::
  Goto, RMARe
 
-;Teir 2 Template
+;Tier 2 Template
+;Hotkey, %A_TSENHK%, TSENote
+
+
 ^!n::
+TSENote:
     Send, Product: {Enter}{Enter}========================={Enter}{Enter}Spoke With: {Enter}{Enter}Reported Problem: {Enter}{Enter}-------------------------{Enter}Troubleshooting on call:{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}-------------------------{Enter}{Enter}Current Status:{Enter}
     SendEvent {Shift Up}{Ctrl Up}{Alt Up}
     Return
+
+^!P::
+    Send, -----------------------------{Enter}Hello PS,{Enter}Please have a look at the below case.{Enter}{Enter}BUSINESS CASE:{Enter}Case Title:{Enter}Case Number:{Enter}{Enter}CASE SUMMARY{Enter}{Enter}{Enter}TROUBLESHOOTING PERFORMED{Enter}{Enter}{Enter}KNOWLEDGE CHECKLIST{Enter}1.Similar tickets in Service Cloud with relevant keywords/error codes >> X{Enter}2.SME OneNote articles >> X{Enter}3.Issue tracker articles >> X{Enter}4.Axis OS PORTAL & FW release notes & E2E Troubleshooting guides >> X{Enter}{Enter}SME/TSS INPUT{Enter}{Enter}If consulted, please specify the outcome of the SME review{Enter}{Enter}Also please specify in case of PS/Manager request > Ok to skip SME/TSS step exceptionally but Escalation template is still mandatory{Enter}{Enter}STEPS TO REPRODUCE{Enter}{Enter}{Enter}{Enter}{Enter}ACTION REQUESTED: {Enter}{Enter}{Enter}{Enter}Regards TSE{Enter}------------------------------
+    SendEvent {Shift Up}{Ctrl Up}{Alt Up}
+    Return
+
 
 ;Chat Responses
 ^!1::
