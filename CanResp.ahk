@@ -18,34 +18,11 @@ mexLoc = {Enter}{Enter}Mexico, Ciudad Mexico{Enter}Axis Communications{Enter}Av.
 
 Goto, ConfigMan
 
-;Vardependvars
-;Opening
-opening = Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
-;Ending
-ending = {Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php{Enter}{Enter}
-
-TSEHK := ^!n
-PSHK := ^!p
-
-
-
 ;CanResp Setup
 ^!c::
 Goto, CRSU
-  
-
-;RMA Responses
-^!r::
- Goto, RMAIn
-
-
-^!t::
- Goto, RMARe
 
 ;Tier 2 Template
-Hotkey, %TSEHK%, TSENote, On
-Hotkey, %PSHK% , PSNote, On
-
 
 TSENote:
     Send, Product: {Enter}{Enter}========================={Enter}{Enter}Spoke With: {Enter}{Enter}Reported Problem: {Enter}{Enter}-------------------------{Enter}Troubleshooting on call:{Enter}{Enter}{Enter}{Enter}{Enter}{Enter}-------------------------{Enter}{Enter}Current Status:{Enter}
@@ -85,19 +62,17 @@ PSNote:
     SendEvent {Shift Up}{Ctrl Up}{Alt Up}
     Return
 ;Freeform Responses
-^!f::
+FreeOpen:
     Send, Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
     SendEvent {Shift Up}{Ctrl Up}{Alt Up}
     Return
-^!g::
+FreeClose:
     Send, %ending%
     SendEvent {Shift Up}{Ctrl Up}{Alt Up}
     Return
 ;Issues
-^!i::
- Goto, RMAIs
 
-^!v::
+CanPaste:
     canboard := "CanBoard.clip"
     canbrr := FileOpen(canboard, "r")
     isovared := canbrr.Read()

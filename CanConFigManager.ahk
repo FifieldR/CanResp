@@ -34,6 +34,24 @@ ConfigMan:
     Hotkey, %RINKEY% , RMAIn, On
     RREKEY := infopull[5]
     Hotkey, %RREKEY% , RMARe, On
+    RISKEY := infopull[6]
+    Hotkey, %RISKEY% , RMAIs, On
+    CRPKEY := infopull[7]
+    Hotkey, %CRPKEY% , CanPaste, On
+    TSEKEY := infopull[8]
+    Hotkey, %TSEKEY% , TSENote, On
+    PSKEY := infopull[9]
+    Hotkey, %PSKEY% , PSNote, On
+    OPENKEY := infopull[10]
+    Hotkey, %OPENKEY% , FreeOpen, On
+    CLOSEKEY := infopull[11]
+    Hotkey, %CLOSEKEY% , FreeClose, On
+
+    ;Vardependvars
+    ;Opening
+    opening = Thank you for contacting Axis Communications. My name is %FName%, and I will be assisting you with this case.
+    ;Ending
+    ending = {Enter}{Enter}Warm regards, {Enter}%FName%{Enter}%Title%{Enter}Axis Communications{Enter}Phone: 1-800-444-2947, option 2{Enter}Online Chat: http://www.axis.com/reg/chat.php{Enter}{Enter}
     MsgBox,4,Is This Correct?,%FName% %LName% %Title%
     IfMsgBox, No
        Goto, CRSU
