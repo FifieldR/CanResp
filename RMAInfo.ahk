@@ -15,6 +15,7 @@ RMAIn:
     Gui, RIR:Add, Radio, vRMAOOW, Out Of Warranty
     Gui, RIR:Add, Radio, vRMADOA, Dead On Arrival
     Gui, RIR:Add, Radio, vSUSWat, Suspected Water or Surge
+    Gui, RIR:Add, Radio, vKNOWat, Known Water or Surge
     Gui, RIR:Add, Radio, vQ60Pow, Q60 Powerboard
     Gui, RIR:Add, Radio, vP56Pow, P5624/35/E Powerboard
     Gui, RIR:Add, Text, , Are They A Partner
@@ -68,6 +69,21 @@ RMAIn:
         buffer = Thank you for contacting Axis Communications. My name is %FName% and I will be assisting you with this case.{Enter}{Enter}Your %product% (SN: %serial%) is well within its warranty period. If you would like to start the Standard RMA process I will need to know a couple of things.{Enter}{Enter}1. The full shipping address{Enter}2. A contact phone number{Enter}{Enter}Once I get that information I will create an RMA for the defective unit.{Enter}NOTE: Standard RMA is free of charge, but can take 7-10 business days to complete once the unit is received at our repair facility. You would send us the device and we would test to verify the failure.{Enter}{Enter} Unfortunately, if our repair facility has determined that your %product% has been damaged due to ELECTRICAL SURGE OR WATER INTRUSION , this type of damage is not covered under warranty and therefore the warranty on this unit will be voided. To better assist please provide {Enter}{Enter}1. How long was this camera operational before this issue occurred?{Enter}2. Was this camera installed indoors or outdoors?{Enter}3. Can you upload a picture of the ethernet cabling used to connect this camera to the POE switch?{Enter}4. Can you upload a picture of the RJ-45 connector used to terminate this cameras ethernet cable?{Enter}5. Were there any electrical/lightning storms in the area lately?{Enter}6. Were there any power surges/outages in the area lately?{Enter}This will help determine if the manufactures installation instructions have been followed or if the %product% is a defect in manufacturing.%ending%
         SetToClip(buffer)
         return
+        } else if (KNOWat){
+        Gui, KNOWatInfo:New , ,Out of Warranty Info
+        Gui, KNOWatInfo:Add, Text, , What is The Case Number
+        Gui, KNOWatInfo:Add, Edit, vCase,
+        Gui, KNOWatInfo:Add, Text, , What is the cost to repair
+        Gui, KNOWatInfo:Add, Edit, vCost,
+        Gui, KNOWatInfo:Add, Button, , Submit
+        Gui, KNOWatInfo:Show
+        Return
+        KNOWatInfoButtonSubmit:
+            Gui, KNOWatInfo:Submit
+            Gui, KNOWatInfo:Destroy
+        buffer = Unfortunately, because your %product% (SN: %serial%) has been damaged by water the device is no longer covered under warranty.{Enter}{Enter}Optionally, we do have an Out of Warranty Repair RMA program. The cost to repair this product would be $%cost%.00 USD. To initiate the Out of Warranty Repair RMA program you need to call us at 800-444-2947 and select option 2. For us to process your credit card payment, please reference Case#: %case% to expedite processing. For security reasons please do not provide any credit card information within the case.{Enter}{Enter}NOTE: Our Out of Warranty Repair program guarantees that you will receive back a working product. Axis will fully repair and clean your product, or where necessary, replace your product. In either case, the repaired or replaced unit will be covered under the remainder of the original units remaining warranty period.%ending%
+        SetToClip(buffer)
+        return
         } else if (Q60Pow){
         Gui, Q60Info:New , ,Out of Warranty Info
         Gui, Q60Info:Add, Text, , How long was the warranty
@@ -78,7 +94,7 @@ RMAIn:
         Q60InfoButtonSubmit:
             Gui, Q60Info:Submit
             Gui, Q60Info:Destroy
-        buffer = Thank you for contacting Axis Communications. My name is %FName% and I will be assisting you with this case.{Enter}{Enter}Unfortunately, our system shows that the warranty on your %product% (SN: %serial%) has expired. If you feel this is in error, please provide a dated billing or shipping receipt as proof of purchase in order to show that this unit is still within its original warranty period of: %year% year(s).{Enter}{Enter}If you have a Q60xx camera (indoor or outdoor version) that is out of warranty and will no longer power up, we can now attempt repair by replacing the power board at reduced cost. This reduced repair cost is only valid for cameras that will not power up.{Enter}{Enter}For any Q604x or Q605x series cameras, Axis Communications offers other repair or replacement options for cameras that have issues not associated with power problems. Unfortunately, there are no other repair or upgrade options for the Q603x series cameras.{Enter}{Enter}All cameras that are within warranty will follow the normal RMA process listed on our website:{Enter}https://www.axis.com/global/en/support/warranty-and-rma{Enter}{Enter}Here’s how we would proceed:{Enter}{Enter}• You will identify the issue is that the “camera doesn’t power up”. We would suggest to physically inspect the camera and make sure no lights come on the camera with a known good power source and cable.{Enter}{Enter}• We can attempt to repair by replacing the power board on the camera for a cost of $99 USD per board. Cost will be refunded if the power board replacement does not resolve the issue, there are no other upgrade options available.{Enter}{Enter}• We will need a credit card at the time of the call to process the RMA.{Enter}{Enter}• If power board replacement is successful, the camera will be returned to you via ups ground with a 90 warranty on repaired parts.{Enter}{Enter}• If the repair is unsuccessful you will be given a full refund for the $99 USD repair cost and the option to have Axis recycle or have the camera returned to you. Please call 1-800-444-2947 option 2 to proceed.%ending%
+        buffer = Thank you for contacting Axis Communications. My name is %FName% and I will be assisting you with this case.{Enter}{Enter}Unfortunately, our system shows that the warranty on your %product% (SN: %serial%) has expired. If you feel this is in error, please provide a dated billing or shipping receipt as proof of purchase in order to show that this unit is still within its original warranty period of: %year% year(s).{Enter}{Enter}If you have a Q60xx camera (indoor or outdoor version) that is out of warranty and will no longer power up, we can now attempt repair by replacing the power board at reduced cost. Unfortunately, there are no other repair or upgrade options for the Q60xx or Q60xx-E series cameras.{Enter}{Enter}Here’s how we would proceed:{Enter}{Enter}• You will identify the issue is that the “camera doesn’t power up”. We would suggest to physically inspect the camera and make sure no lights come on the camera with a known good power source and cable.{Enter}{Enter}• We can attempt to repair by replacing the power board on the camera for a cost of $99 USD per board. Cost will be refunded if the power board replacement does not resolve the issue, there are no other upgrade options available.{Enter}{Enter}• We will need a credit card at the time of the call to process the RMA.{Enter}{Enter}• If power board replacement is successful, the camera will be returned to you via ups ground with a 90 warranty on repaired parts.{Enter}{Enter}• If the repair is unsuccessful you will be given a full refund for the $99 USD repair cost and the option to have Axis recycle or have the camera returned to you. Please call 1-800-444-2947 option 2 to proceed.%ending%
         SetToClip(buffer)
         return
         } else if (P56Pow){
