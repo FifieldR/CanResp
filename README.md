@@ -70,3 +70,8 @@ Input Response
 	Ctrl + alt + f
     Freeform Response End
 	Ctrl + alt + g
+  Notes
+	TSE Notes
+	Ctrl + alt + n
+	PS Notes
+	Ctrl + alt + p
