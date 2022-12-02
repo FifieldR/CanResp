@@ -7,10 +7,11 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ;TrayMenu
+Menu, tray, Add, &HotKeys, OpenHotKeys
 Menu, tray, Add, &About, OpenAbout
 
 ;vars
-Version = 2.5.2dev-2
+Version = 2.5.2dev-3
 
 ;Canada Address
 canLoc = {Enter}{Enter}Axis Communications, Inc.{Enter}c/o Bigtech{Enter}5990 14th Ave{Enter}Markham, ON L3S 4M4{Enter}CANADA{Enter}
@@ -26,17 +27,31 @@ Goto, ConfigMan
 Goto, CRSU
 
 ;Tray Fuctions
+OpenHotKeys:
+ ;CleanRINKEY := GetKeyName(%RINKEY%)
+    Gui, OpenHotKeys:New, ,CanResp HotKeys
+    Gui, OpenHotKeys:Add, Text, , These HotKeys Can Be Changed In The Config Manager.
+    Gui, OpenHotKeys:Add, Text, , Config Manager: Ctrl + Alt + C
+    GUI, OpenHotKeys:Add, Text, , RMA Info Request: Ctrl + Alt + R
+    GUI, OpenHotKeys:Add, Text, , RMA Receipt: Ctrl + Alt + T
+    GUI, OpenHotKeys:Add, Text, , CanResp Paste: Ctrl + Alt + V
+    GUI, OpenHotKeys:Add, Text, , TSE Notes: Ctrl + Alt + N
+    GUI, OpenHotKeys:Add, Text, , PS Notes: Ctrl + Alt + P
+    GUI, OpenHotKeys:Add, Text, , FreeForm Open: Ctrl + Alt + F
+    GUI, OpenHotKeys:Add, Text, , FreeForm Close: Ctrl + Alt + G
+    Gui, OpenHotKeys:Show
+    Return
+
 OpenAbout:
     Gui, OpenAbout:New, ,CanResp About
     Gui, OpenAbout:Add, Text, , Version: %Version%
     Gui, OpenAbout:Add, Text, , Created By Ryan Fifield
-    Gui, OpenAbout:Add, Text, , Home Grown Code Watered By My Tears
-    Gui, OpenAbout:Add, Button, , Submit
+    Gui, OpenAbout:Add, Text, , If you have any issues or suggestion:
+    Gui, OpenAbout:Add, Text, , Email me at ryan.fifield@axis.com with the Subjects of CanResp Suggestion or CanResp Issues
+    Gui, OpenAbout:Add, Text, , Or use the issues tab and suggestions discussion on github
+    Gui, OpenAbout:Add, Text, , Made With Home Grown Code Watered By My Tears
     Gui, OpenAbout:Show
     Return
-    OpenAboutButtonSubmit:
-        Gui, OpenAbout:Destroy
-        Return
 ;Tier 2 Template
 
 TSENote:
@@ -101,7 +116,7 @@ SetToClip(buffer) {
     canbrw := FileOpen(canboard, "w")
     canbrw.Write(buffer)
     canbrw.Close()
-    Return, 
+    Return
 }
 
 

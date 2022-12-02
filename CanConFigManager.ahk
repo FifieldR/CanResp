@@ -10,7 +10,7 @@ ConfigMan:
     if (FileExist(file)) {
         FileReadLine, starter, %file%, 1
         if (starter != filever) {
-            MsgBox, It Looks that you have an outdated conf file. Do not worry we will run through a quick setup and then we can correct your conf file without you even needing to edit it yourself. This also reduces the chance of human error.
+            MsgBox, It Looks that you have an outdated conf file. Do not worry we will run through a quick setup and then we can correct your conf file without you even needing to edit it yourself.
             Goto, CRSU
         
         }
@@ -61,12 +61,11 @@ ConfigMan:
 CRSU:
     Gui, CRSU:New, ,CanResp Setup
     Gui, CRSU:Add, Text, , First Name
-    Gui, CRSU:Add, Edit, vSetfname w160, Joe
+    Gui, CRSU:Add, Edit, vSetfname w160, %FName%
     Gui, CRSU:Add, Text, , Last Name
-    Gui, CRSU:Add, Edit, vSetlname w160, Smith
+    Gui, CRSU:Add, Edit, vSetlname w160, %LName%
     Gui, CRSU:Add, Text, , Title
-    Gui, CRSU:Add, Edit, vSettitle w160, Janitor Manager
-    ;Gui, CRSU:Add, Checkbox, vAdvHotSet, Advanced Hotkey Setup(Currently not doing anything)
+    Gui, CRSU:Add, Edit, vSettitle w160, %Title%
     Gui, CRSU:Add, Button, , Submit
     Gui, CRSU:Show
     Return

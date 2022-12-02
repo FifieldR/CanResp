@@ -16,6 +16,8 @@ RMARe:
     Gui, RMAR:Add, Radio, vCan, Canada
     Gui, RMAR:Add, Radio, vUSA, United States of America
     Gui, RMAR:Add, Radio, vMex, Mexico
+    Gui, RMAR:Add, Text, , Are They A Partner
+    Gui, RMAR:Add, Checkbox, vPartner, Partner
     Gui, RMAR:Add, Button, ,Submit
     Gui, RMAR:Show
     Return
