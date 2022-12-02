@@ -110,5 +110,6 @@ CRSU:
     filew :=FileOpen(file, "w")
     filew.Write(filever . "`r`nfirst_name_var: `r`n" . Setfname . "`r`nlast_name_var:`r`n" . Setlname . "`r`ntitle_var:`r`n" . Settitle . "`r`nrma_info_request:`r`n" . RMAInHot . "`r`nrma_receipt:`r`n" . RMARcHot . "`r`nrma_issues:`r`n" . RMAIsHot . "`r`ncanresp_paste:`r`n" . RMAPasteHot . "`r`ncanresp_tsenote:`r`n" . TSENoHot . "`r`ncanresp_psnote:`r`n" . PSNoHot . "`r`ncanresp_freeformopen:`r`n" . FFOpHot . "`r`ncanresp_freeformclose:`r`n" . FFClHot)
     filew.Close()
+    Reload
     Return
     }
