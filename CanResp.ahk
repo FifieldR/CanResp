@@ -6,8 +6,11 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
+;TrayMenu
+Menu, tray, Add, &About, OpenAbout
 
 ;vars
+Version = 2.5.2dev-2
 
 ;Canada Address
 canLoc = {Enter}{Enter}Axis Communications, Inc.{Enter}c/o Bigtech{Enter}5990 14th Ave{Enter}Markham, ON L3S 4M4{Enter}CANADA{Enter}
@@ -22,6 +25,18 @@ Goto, ConfigMan
 ^!c::
 Goto, CRSU
 
+;Tray Fuctions
+OpenAbout:
+    Gui, OpenAbout:New, ,CanResp About
+    Gui, OpenAbout:Add, Text, , Version: %Version%
+    Gui, OpenAbout:Add, Text, , Created By Ryan Fifield
+    Gui, OpenAbout:Add, Text, , Home Grown Code Watered By My Tears
+    Gui, OpenAbout:Add, Button, , Submit
+    Gui, OpenAbout:Show
+    Return
+    OpenAboutButtonSubmit:
+        Gui, OpenAbout:Destroy
+        Return
 ;Tier 2 Template
 
 TSENote:
