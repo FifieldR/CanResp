@@ -11,7 +11,7 @@ Menu, tray, Add, &HotKeys, OpenHotKeys
 Menu, tray, Add, &About, OpenAbout
 
 ;vars
-Version = 2.5.2dev-3
+Version = 2.5.3
 
 ;Canada Address
 canLoc = {Enter}{Enter}Axis Communications, Inc.{Enter}c/o Bigtech{Enter}5990 14th Ave{Enter}Markham, ON L3S 4M4{Enter}CANADA{Enter}

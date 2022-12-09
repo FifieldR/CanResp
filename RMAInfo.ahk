@@ -54,7 +54,7 @@ RMAIn:
         Gui, OOWInfo:Add, Edit, vCase,
         Gui, OOWInfo:Add, Text, , How long was the warranty
         Gui, OOWInfo:Add, Edit, vYear,
-        Gui, OOWInfo:Add, Text, , What is the cost to repair
+        Gui, OOWInfo:Add, Text, , What is the cost to repair ($XXX.00)
         Gui, OOWInfo:Add, Edit, vCost,
         Gui, OOWInfo:Add, Button, , Submit
         Gui, OOWInfo:Show
@@ -73,7 +73,7 @@ RMAIn:
         Gui, KNOWatInfo:New , ,Out of Warranty Info
         Gui, KNOWatInfo:Add, Text, , What is The Case Number
         Gui, KNOWatInfo:Add, Edit, vCase,
-        Gui, KNOWatInfo:Add, Text, , What is the cost to repair
+        Gui, KNOWatInfo:Add, Text, , What is the cost to repair ($XXX.00)
         Gui, KNOWatInfo:Add, Edit, vCost,
         Gui, KNOWatInfo:Add, Button, , Submit
         Gui, KNOWatInfo:Show
