@@ -10,7 +10,7 @@ ConfigMan:
     if (FileExist(file)) {
         FileReadLine, starter, %file%, 1
         if (starter != filever) {
-            MsgBox, It Looks that you have an outdated conf file. Do not worry we will run through a quick setup and then we can correct your conf file without you even needing to edit it yourself. This also reduces the chance of human error.
+            MsgBox, It Looks that you have an outdated conf file. Do not worry we will run through a quick setup and then we can correct your conf file without you even needing to edit it yourself.
             Goto, CRSU
         
         }
@@ -61,12 +61,11 @@ ConfigMan:
 CRSU:
     Gui, CRSU:New, ,CanResp Setup
     Gui, CRSU:Add, Text, , First Name
-    Gui, CRSU:Add, Edit, vSetfname w160, Joe
+    Gui, CRSU:Add, Edit, vSetfname w160, %FName%
     Gui, CRSU:Add, Text, , Last Name
-    Gui, CRSU:Add, Edit, vSetlname w160, Smith
+    Gui, CRSU:Add, Edit, vSetlname w160, %LName%
     Gui, CRSU:Add, Text, , Title
-    Gui, CRSU:Add, Edit, vSettitle w160, Janitor Manager
-    ;Gui, CRSU:Add, Checkbox, vAdvHotSet, Advanced Hotkey Setup(Currently not doing anything)
+    Gui, CRSU:Add, Edit, vSettitle w160, %Title%
     Gui, CRSU:Add, Button, , Submit
     Gui, CRSU:Show
     Return
@@ -110,5 +109,6 @@ CRSU:
     filew :=FileOpen(file, "w")
     filew.Write(filever . "`r`nfirst_name_var: `r`n" . Setfname . "`r`nlast_name_var:`r`n" . Setlname . "`r`ntitle_var:`r`n" . Settitle . "`r`nrma_info_request:`r`n" . RMAInHot . "`r`nrma_receipt:`r`n" . RMARcHot . "`r`nrma_issues:`r`n" . RMAIsHot . "`r`ncanresp_paste:`r`n" . RMAPasteHot . "`r`ncanresp_tsenote:`r`n" . TSENoHot . "`r`ncanresp_psnote:`r`n" . PSNoHot . "`r`ncanresp_freeformopen:`r`n" . FFOpHot . "`r`ncanresp_freeformclose:`r`n" . FFClHot)
     filew.Close()
+    Reload
     Return
     }
